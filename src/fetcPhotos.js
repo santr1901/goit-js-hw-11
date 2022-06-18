@@ -13,8 +13,8 @@ const axios = require("axios").default;
 
 export async function fetcPhotos(search) {
   try {
-      const response = await axios.get(`${RESOURSE_URL}?key=${RESOURSE_KEY}&q=${search}&image_type=photo&orientation=horizontal&safesearch=true`)
-          return response
+    const response =  await axios.get(`${RESOURSE_URL}?key=${RESOURSE_KEY}&q=${search}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=1`)
+    return response; 
       
   } catch (error) {
     console.error(error);
