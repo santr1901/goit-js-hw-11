@@ -11,10 +11,11 @@ const axios = require("axios").default;
 // };
 
 
-export async function fetcPhotos(search) {
+export async function fetcPhotos(searchName, pageNumber) {
   try {
-    const response =  await axios.get(`${RESOURSE_URL}?key=${RESOURSE_KEY}&q=${search}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=1`)
-    return response; 
+    const response = await axios.get(`${RESOURSE_URL}?key=${RESOURSE_KEY}&q=${searchName}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${pageNumber}`);
+    
+    return response.data; 
       
   } catch (error) {
     console.error(error);
