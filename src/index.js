@@ -20,13 +20,15 @@ loadBtn.addEventListener("click", loadMore);
  function search(event) {
     event.preventDefault();
  searchedPictureName = searchQuery.value;
-   
+   if (searchedPictureName === "") {
+     Notiflix.Notify.info("Input the name of the picture")
+     return
+   }
    console.log(searchedPictureName);
    pageNumber = 1;
     dontShowBtn();
     clearGallery();
    
-
    fetcPhotos(searchedPictureName, pageNumber)
         .then(data => {
           if (data.hits.length === 0) {
@@ -58,13 +60,11 @@ function loadMore() {
       }
 
       console.log(pageNumber)
-      
-      
     })
-  // .catch({})
+  
     }
 
-// const data = await photosApiServices.fetchPhotos();
+
 
 function createCard(data) {
     const cardMarkup = data.hits.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `<div class="photo-card">
